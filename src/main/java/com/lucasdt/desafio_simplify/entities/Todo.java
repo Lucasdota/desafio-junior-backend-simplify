@@ -43,7 +43,7 @@ public class Todo {
         this.description = description;
     }
 
-    public void toggleDone() {
-        this.done = !done;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }
