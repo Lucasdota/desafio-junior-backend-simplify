@@ -1,10 +1,9 @@
 package com.lucasdt.desafio_simplify.entities;
 
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
-@RequestMapping("todo")
+@Table(name = "todos")
 public class Todo {
 
     @Id
@@ -14,13 +13,16 @@ public class Todo {
     private String name;
     @Column(name = "description", nullable = false)
     private String description;
+    @Column(name = "priority", nullable = false)
+    private Integer priority;
     private boolean done;
 
     public Todo() {}
 
-    public Todo(String name, String description) {
+    public Todo(String name, String description, Integer priority) {
         this.name = name;
         this.description = description;
+        this.priority = priority;
     }
 
     public Long getId() {
@@ -35,12 +37,24 @@ public class Todo {
         return description;
     }
 
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public boolean getDone() {
+        return done;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 
     public void setDone(boolean done) {

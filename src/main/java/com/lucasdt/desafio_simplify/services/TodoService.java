@@ -23,11 +23,12 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public Todo update(Long id, String name, String description, boolean done) {
+    public Todo update(Long id, String name, String description, Integer priority, boolean done) {
         Optional<Todo> todo = todoRepository.findById(id);
         if (todo.isEmpty()) return null;
         todo.get().setName(name);
         todo.get().setDescription(description);
+        todo.get().setPriority(priority);
         todo.get().setDone(done);
         todoRepository.save(todo.get());
         return todo.get();
